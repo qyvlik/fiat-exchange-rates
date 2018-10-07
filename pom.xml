@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>space.qyvlik</groupId>
-	<artifactId>fait-exchange-rates</artifactId>
+	<artifactId>fiat-exchange-rates</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>fait-exchange-rates</name>
-	<description>fait-exchange-rates</description>
+	<name>fiat-exchange-rates</name>
+	<description>fiat-exchange-rates</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
