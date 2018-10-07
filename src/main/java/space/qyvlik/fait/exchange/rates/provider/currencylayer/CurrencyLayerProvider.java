@@ -49,10 +49,10 @@ public class CurrencyLayerProvider extends AbstractFiatExchangeRatesProvider {
                 url = "https://" + url;
             }
 
-            ResponseEntity<ExchangeRateListResponse> response =
-                    restTemplate.getForEntity(url, ExchangeRateListResponse.class);
+            ResponseEntity<CurrencyLayerQuotes> response =
+                    restTemplate.getForEntity(url, CurrencyLayerQuotes.class);
 
-            ExchangeRateListResponse body = response.getBody();
+            CurrencyLayerQuotes body = response.getBody();
 
             if (body == null || body.getSuccess() == null || !body.getSuccess()) {
                 if (body == null) {

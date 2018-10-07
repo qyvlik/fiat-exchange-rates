@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 // http://apilayer.net/api/live
-public class ExchangeRateListResponse implements Serializable {
+public class CurrencyLayerQuotes implements Serializable {
     private Boolean success;
     private String terms;
     private String privacy;
@@ -14,7 +14,7 @@ public class ExchangeRateListResponse implements Serializable {
     private Map<String, BigDecimal> quotes;
     private String error;
 
-    public ExchangeRateListResponse() {
+    public CurrencyLayerQuotes() {
 
     }
 

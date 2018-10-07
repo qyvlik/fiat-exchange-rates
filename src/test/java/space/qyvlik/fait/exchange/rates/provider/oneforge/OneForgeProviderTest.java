@@ -1,4 +1,4 @@
-package space.qyvlik.fait.exchange.rates.provider.currencylayer;
+package space.qyvlik.fait.exchange.rates.provider.oneforge;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,15 +14,16 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest("application-test.yml")
-public class CurrencyLayerProviderTest extends BaseService {
+public class OneForgeProviderTest extends BaseService {
 
     @Autowired
-    private CurrencyLayerProvider provider;
+    private OneForgeProvider provider;
 
-    @Value("${provider.CurrencyLayer.plan}")
+
+    @Value("${provider.OneForge.plan}")
     private String plan;
 
-    @Value("${provider.CurrencyLayer.key}")
+    @Value("${provider.OneForge.key}")
     private String key;
 
     @Test
@@ -36,5 +37,4 @@ public class CurrencyLayerProviderTest extends BaseService {
 
         logger.info("findExchangeRateList:{}", rateList);
     }
-
 }
