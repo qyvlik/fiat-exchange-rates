@@ -1,3 +1,4 @@
-# fait-exchange-rates
+# fiat-exchange-rates
 
-fait exchange rates
+fiat exchange rates
+
