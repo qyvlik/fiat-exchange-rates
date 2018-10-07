@@ -3,4 +3,7 @@ server:
 
 spring:
   profiles:
-    active: test
+    active: test,scheduling
+
+startup:
+  initRate: true

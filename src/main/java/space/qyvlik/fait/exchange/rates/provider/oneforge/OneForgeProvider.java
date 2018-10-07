@@ -22,7 +22,7 @@ public class OneForgeProvider extends AbstractFiatExchangeRatesProvider {
     private String host = "forex.1forge.com";
 
     public OneForgeProvider() {
-        super("1forge");
+        super("OneForge");
     }
 
     @Override
