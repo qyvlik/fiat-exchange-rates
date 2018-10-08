@@ -49,12 +49,6 @@ public class FiatExchangeRateService extends BaseService {
         String plan = environment.getProperty("provider." + provider.getProvider() + ".plan");
         String username = environment.getProperty("provider." + provider.getProvider() + ".username");
 
-        if (StringUtils.isAnyBlank(key, plan, username)) {
-            logger.warn("syncFiatExchangeRateList fail : key or plan or username is empty, provider:{}",
-                    provider.getProvider());
-            return;
-        }
-
         Account account = new Account();
         account.setPlan(plan);
         account.setAccessKey(key);
