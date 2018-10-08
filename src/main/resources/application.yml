@@ -6,4 +6,4 @@ spring:
     active: test,scheduling
 
 startup:
-  initRate: false
+  initRate: true

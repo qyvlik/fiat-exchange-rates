@@ -27,6 +27,8 @@ public class FiatExchangeRateService extends BaseService {
     private Environment environment;
 
     public void syncFiatExchangeRateList() {
+        logger.info("syncFiatExchangeRateList start");
+
         List<AbstractFiatExchangeRatesProvider> providerList =
                 providerFactory.providerList();
 
@@ -38,6 +40,8 @@ public class FiatExchangeRateService extends BaseService {
         for (AbstractFiatExchangeRatesProvider provider : providerList) {
             syncFiatExchangeRateList(provider);
         }
+
+        logger.info("syncFiatExchangeRateList end");
     }
 
     public void syncFiatExchangeRateList(AbstractFiatExchangeRatesProvider provider) {
@@ -68,19 +72,32 @@ public class FiatExchangeRateService extends BaseService {
         }
 
         if (rateList == null || rateList.size() == 0) {
-            logger.warn("syncFiatExchangeRateList fail : rateList is empty");
+            logger.warn("syncFiatExchangeRateList fail : rateList is empty, provider:{}",
+                    provider.getProvider());
             return;
         }
 
         for (FiatExchangeRate fiatRate : rateList) {
-            String rateKey = RATE_KEY_PREFIX + fiatRate.getProvider() + ":" + fiatRate.getBase() + "/" + fiatRate.getQuote();
+            String rateKey = RATE_KEY_PREFIX
+                    + fiatRate.getProvider()
+                    + ":"
+                    + fiatRate.getBase() + "/" + fiatRate.getQuote();
             String jsonStr = JSON.toJSONString(fiatRate);
             redisTemplate.opsForValue().setIfAbsent(rateKey, jsonStr);
         }
     }
 
-    public List<FiatExchangeRate> findFiatExchangeRateList() {
-        Set<String> rateKeySet = redisTemplate.keys(RATE_KEY_PREFIX + "*");
+    public List<FiatExchangeRate> findFiatExchangeRateListByBaseAndQuote(String base, String quote) {
+        // r:*:base/quote
+        if (StringUtils.isBlank(base)) {
+            base = "*";
+        }
+
+        if (StringUtils.isBlank(quote)) {
+            quote = "*";
+        }
+
+        Set<String> rateKeySet = redisTemplate.keys(RATE_KEY_PREFIX + "*:" + base + "/" + quote);
 
         List<FiatExchangeRate> rateList = Lists.newArrayList();
 
