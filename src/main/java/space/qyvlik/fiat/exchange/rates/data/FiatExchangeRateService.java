@@ -91,7 +91,7 @@ public class FiatExchangeRateService extends BaseService {
             quote = "*";
         }
 
-        Set<String> rateKeySet = redisTemplate.keys(RATE_KEY_PREFIX + "*:" + base + "/" + quote);
+        Set<String> rateKeySet = redisTemplate.keys(RATE_KEY_PREFIX + "*:" + base.toUpperCase() + "/" + quote.toUpperCase());
 
         List<FiatExchangeRate> rateList = Lists.newArrayList();
 
