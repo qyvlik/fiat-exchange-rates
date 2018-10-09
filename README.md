@@ -33,7 +33,7 @@ startup the fiat-exchange-rates by special yml file.
 docker run -d  --name rate \
 -p 8080:8080 \
 -v application-prod.yml:/home/www/application-prod.yml \
-qyvlik/fiat-exchange-rates:latest
+qyvlik/fiat-exchange-rates:latest \
 --spring.profiles.active=prod
 ```
 
