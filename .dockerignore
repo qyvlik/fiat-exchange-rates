@@ -1,3 +1,5 @@
 *
 !Dockerfile
 !target/*.jar
+!src
+!pom.xml
