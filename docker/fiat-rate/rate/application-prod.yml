@@ -22,3 +22,8 @@ provider:
     plan:
   EuropeanCentralBank:
     enable: true
+  OpenExchangeRates:
+    enable: true
+    username:
+    key:
+    plan:
