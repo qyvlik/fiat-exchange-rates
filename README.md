@@ -4,37 +4,9 @@ fiat exchange rates
 
 ## docker
 
-### docker pull and run
+### docker-compose
 
-make sure you have a `application-prod.yml` file such as follow:
-
-```
-spring:
-  redis:
-    database: 0
-    host: THE-REDIS-HOST
-    port: 6379
-    password:
-    timeout: 10000
-provider:
-  CurrencyLayer:
-    username: OPTIONAL
-    key: KEY-OF-CurrencyLayer
-    plan: free
-  OneForge:
-    username: OPTIONAL
-    key: KEY-OF-1forge.com
-    plan: free
-```
-
-startup the fiat-exchange-rates by special yml file.
-
-```bash
-docker run -d --name rate \
--p 8080:8080 \
--v application-prod.yml:/home/www/application-prod.yml \
-qyvlik/fiat-exchange-rates:latest
-```
+see [fiat-rate-docker-compose](./docker/fiat-rate/README.md)
 
 ### fiat-exchange-rates optional config
 

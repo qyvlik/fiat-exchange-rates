@@ -1,5 +1,13 @@
 # fiat-rate-docker-compose
 
+1. make sure you have install `docker` and `docker-compose`
+2. copy [.env.example](./.env.example) to [`.env`](./.env)，[`.env`](./.env)
+3. define the env var in the [`.env`](./.env) file
+4. `docker-compose pull`
+5. `docker-compose up -d`
+
+## cn
+
 1. 确认安装好 `docker`, `docker-compose`
 2. 将 [.env.example](./.env.example) 拷贝到同目录下，并命名为 [`.env`](./.env)，[`.env`](./.env) 是给 `docker-compose` 使用的
     - [`.env`](./.env) 有若干环境变量
