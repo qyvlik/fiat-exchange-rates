@@ -3,4 +3,4 @@ server:
 
 spring:
   profiles:
-    active: scheduling,prod
+    active: scheduling,test

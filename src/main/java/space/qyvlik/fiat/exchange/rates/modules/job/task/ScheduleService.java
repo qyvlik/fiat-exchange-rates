@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import space.qyvlik.fiat.exchange.rates.common.BaseService;
-import space.qyvlik.fiat.exchange.rates.modules.rate.FiatExchangeRateService;
+import space.qyvlik.fiat.exchange.rates.modules.rate.service.FiatExchangeRateService;
 
 import javax.annotation.PostConstruct;
 

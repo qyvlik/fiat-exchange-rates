@@ -1,6 +1,7 @@
 package space.qyvlik.fiat.exchange.rates.modules.front;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import space.qyvlik.fiat.exchange.rates.common.BaseService;
-import space.qyvlik.fiat.exchange.rates.modules.rate.FiatExchangeRateService;
+import space.qyvlik.fiat.exchange.rates.modules.rate.service.FiatExchangeRateService;
 import space.qyvlik.fiat.exchange.rates.modules.provider.entity.result.FiatExchangeRate;
 import space.qyvlik.fiat.exchange.rates.modules.provider.entity.response.RateListResponse;
 import space.qyvlik.fiat.exchange.rates.common.entity.ResponseError;
@@ -28,7 +29,7 @@ public class FiatExchangeRateController extends BaseService {
     public String rateList() {
         RateListResponse response = new RateListResponse();
         try {
-            List<FiatExchangeRate> rateList = fiatExchangeRateService.findFiatExchangeRateListByBaseAndQuote(null, null);
+            List<FiatExchangeRate> rateList = fiatExchangeRateService.findFiatExchangeRateListByBaseAndQuote("*", "*");
             response.setResult(rateList);
         } catch (Exception e) {
             response.setError(new ResponseError(500, e.getMessage()));
@@ -44,7 +45,7 @@ public class FiatExchangeRateController extends BaseService {
     public String rateListByQuote(@PathVariable("base") String base) {
         RateListResponse response = new RateListResponse();
         try {
-            List<FiatExchangeRate> rateList = fiatExchangeRateService.findFiatExchangeRateListByBaseAndQuote(base, null);
+            List<FiatExchangeRate> rateList = fiatExchangeRateService.findFiatExchangeRateListByBaseAndQuote(base, "*");
             response.setResult(rateList);
         } catch (Exception e) {
             response.setError(new ResponseError(500, e.getMessage()));
@@ -59,6 +60,13 @@ public class FiatExchangeRateController extends BaseService {
     public String rateListByQuoteAndBase(@PathVariable("base") String base, @PathVariable("quote") String quote) {
         RateListResponse response = new RateListResponse();
         try {
+            if (StringUtils.isBlank(base)) {
+                base = "*";
+            }
+
+            if (StringUtils.isBlank(quote)) {
+                quote = "*";
+            }
             List<FiatExchangeRate> rateList = fiatExchangeRateService.findFiatExchangeRateListByBaseAndQuote(base, quote);
             response.setResult(rateList);
         } catch (Exception e) {

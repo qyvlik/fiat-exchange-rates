@@ -9,6 +9,10 @@ spring:
     password:
     timeout: 10000
 
+rate:
+  cache:
+    expire: 3600
+
 provider:
   CurrencyLayer:
     enable: true
