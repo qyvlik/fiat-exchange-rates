@@ -15,6 +15,7 @@ import space.qyvlik.fiat.exchange.rates.provider.ProviderFactory;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class FiatExchangeRateService extends BaseService {
@@ -84,7 +85,7 @@ public class FiatExchangeRateService extends BaseService {
                     + ":"
                     + fiatRate.getBase() + "/" + fiatRate.getQuote();
             String jsonStr = JSON.toJSONString(fiatRate);
-            redisTemplate.opsForValue().setIfAbsent(rateKey, jsonStr);
+            redisTemplate.opsForValue().set(rateKey, jsonStr, 14400, TimeUnit.SECONDS);
         }
         logger.info("syncFiatExchangeRateList end provider:{}", provider.getProvider());
     }
