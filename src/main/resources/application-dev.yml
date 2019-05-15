@@ -1,3 +1,5 @@
+startup:
+  initRate: true
 
 spring:
   redis:
@@ -9,10 +11,14 @@ spring:
 
 provider:
   CurrencyLayer:
+    enable: true
     username:
     key:
     plan:
   OneForge:
+    enable: true
     username:
     key:
     plan:
+  EuropeanCentralBank:
+    enable: true

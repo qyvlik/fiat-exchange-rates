@@ -45,6 +45,13 @@ public class FiatExchangeRateService extends BaseService {
     }
 
     public void syncFiatExchangeRateList(AbstractFiatExchangeRatesProvider provider) {
+        String enable = environment.getProperty("provider." + provider.getProvider() + ".enable");
+
+        if (StringUtils.isBlank(enable) || !Boolean.parseBoolean(enable)) {
+            logger.warn("syncFiatExchangeRateList provider:{} disable", provider.getProvider());
+            return;
+        }
+
         String key = environment.getProperty("provider." + provider.getProvider() + ".key");
         String plan = environment.getProperty("provider." + provider.getProvider() + ".plan");
         String username = environment.getProperty("provider." + provider.getProvider() + ".username");
@@ -79,6 +86,7 @@ public class FiatExchangeRateService extends BaseService {
             String jsonStr = JSON.toJSONString(fiatRate);
             redisTemplate.opsForValue().setIfAbsent(rateKey, jsonStr);
         }
+        logger.info("syncFiatExchangeRateList end provider:{}", provider.getProvider());
     }
 
     public List<FiatExchangeRate> findFiatExchangeRateListByBaseAndQuote(String base, String quote) {
@@ -94,6 +102,10 @@ public class FiatExchangeRateService extends BaseService {
         Set<String> rateKeySet = redisTemplate.keys(RATE_KEY_PREFIX + "*:" + base.toUpperCase() + "/" + quote.toUpperCase());
 
         List<FiatExchangeRate> rateList = Lists.newArrayList();
+
+        if (rateKeySet == null || rateKeySet.isEmpty()) {
+            return rateList;
+        }
 
         for (String rateKey : rateKeySet) {
             String jsonStr = redisTemplate.opsForValue().get(rateKey);
