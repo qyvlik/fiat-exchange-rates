@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+
+  rate-redis:
+    image: redis:5.0.2
+    command: redis-server --appendonly yes
+    volumes:
+      - ./redis/data:/data
+
+  rate:
+    image: qyvlik/fiat-exchange-rates
+    volumes:
+      - ./rate/application.yml:/home/www/application.yml:ro
+      - ./rate/application-prod.yml:/home/www/application-prod.yml:ro
+    environment:
+      - PROVIDER_CURRENCYLAYER_ENABLE=${PROVIDER_CL_ENABLE}
+      - PROVIDER_CURRENCYLAYER_USERNAME=${PROVIDER_CL_USERNAME}
+      - PROVIDER_CURRENCYLAYER_KEY=${PROVIDER_CL_KEY}
+      - PROVIDER_CURRENCYLAYER_PLAN=${PROVIDER_CL_PLAN}
+
+      - PROVIDER_ONEFORGE_ENABLE=${PROVIDER_1F_ENABLE}
+      - PROVIDER_ONEFORGE_USERNAME=${PROVIDER_1F_USERNAME}
+      - PROVIDER_ONEFORGE_KEY=${PROVIDER_1F_KEY}
+      - PROVIDER_ONEFORGE_PLAN=${PROVIDER_1F_PLAN}
+
+      - PROVIDER_EUROPEANCENTRALBANK_ENABLE=${PROVIDER_ECB_ENABLE}
+    depends_on:
+      - rate-redis
+    ports:
+      - "8080:8080"
