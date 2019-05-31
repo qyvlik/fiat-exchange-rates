@@ -12,6 +12,8 @@ spring:
 rate:
   cache:
     expire: 3600
+  scheduled:
+    cron: 0 0 0/3 * * ?
 
 provider:
   CurrencyLayer:
