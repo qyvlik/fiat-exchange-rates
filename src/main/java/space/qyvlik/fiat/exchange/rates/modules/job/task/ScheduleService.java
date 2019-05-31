@@ -29,9 +29,8 @@ public class ScheduleService extends BaseService {
     }
 
     // 1 hour update the fiat exchange rate
-    @Scheduled(cron = "0 0 0/1 * * ? ")
+    @Scheduled(cron = "${rate.scheduled.cron}")
     public void executeExchangeRate() {
         fiatExchangeRateService.syncFiatExchangeRateList();
     }
-
 }

@@ -1,5 +1,5 @@
 startup:
-  initRate: true
+  initRate: false
 
 spring:
   redis:
@@ -12,6 +12,8 @@ spring:
 rate:
   cache:
     expire: 3600
+  scheduled:
+    cron: 0 0 0/1 * * ?
 
 provider:
   CurrencyLayer:

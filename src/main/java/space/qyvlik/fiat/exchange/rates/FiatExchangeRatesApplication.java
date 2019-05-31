@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class FaitExchangeRatesApplication {
+public class FiatExchangeRatesApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FaitExchangeRatesApplication.class, args);
+        SpringApplication.run(FiatExchangeRatesApplication.class, args);
     }
 }
