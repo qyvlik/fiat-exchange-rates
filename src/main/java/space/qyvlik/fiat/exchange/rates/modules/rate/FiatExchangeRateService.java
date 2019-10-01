@@ -1,11 +1,11 @@
-package space.qyvlik.fiat.exchange.rates.modules.rate.service;
+package space.qyvlik.fiat.exchange.rates.modules.rate;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
-import space.qyvlik.fiat.exchange.rates.common.AbstractFiatExchangeRatesProvider;
-import space.qyvlik.fiat.exchange.rates.common.BaseService;
+import space.qyvlik.fiat.exchange.rates.modules.provider.AbstractFiatExchangeRatesProvider;
+import space.qyvlik.fiat.exchange.rates.common.base.BaseService;
 import space.qyvlik.fiat.exchange.rates.modules.provider.ProviderFactory;
 import space.qyvlik.fiat.exchange.rates.modules.provider.entity.request.Account;
 import space.qyvlik.fiat.exchange.rates.modules.provider.entity.result.FiatExchangeRate;

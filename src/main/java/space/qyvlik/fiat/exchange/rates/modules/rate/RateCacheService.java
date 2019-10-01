@@ -1,4 +1,4 @@
-package space.qyvlik.fiat.exchange.rates.modules.rate.service;
+package space.qyvlik.fiat.exchange.rates.modules.rate;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
-import space.qyvlik.fiat.exchange.rates.common.BaseService;
+import space.qyvlik.fiat.exchange.rates.common.base.BaseService;
 import space.qyvlik.fiat.exchange.rates.modules.provider.entity.result.FiatExchangeRate;
 
 import java.util.List;

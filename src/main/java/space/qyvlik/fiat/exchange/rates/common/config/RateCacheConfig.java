@@ -1,4 +1,4 @@
-package space.qyvlik.fiat.exchange.rates.modules.rate.config;
+package space.qyvlik.fiat.exchange.rates.common.config;
 
 import com.google.common.cache.CacheBuilder;
 import org.springframework.beans.factory.annotation.Value;

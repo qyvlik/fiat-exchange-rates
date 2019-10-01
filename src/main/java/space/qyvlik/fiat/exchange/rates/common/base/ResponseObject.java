@@ -1,4 +1,4 @@
-package space.qyvlik.fiat.exchange.rates.common.entity;
+package space.qyvlik.fiat.exchange.rates.common.base;
 
 import java.io.Serializable;
 

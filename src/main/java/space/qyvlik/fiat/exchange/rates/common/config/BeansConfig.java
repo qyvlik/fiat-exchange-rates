@@ -1,4 +1,4 @@
-package space.qyvlik.fiat.exchange.rates.modules.provider.config;
+package space.qyvlik.fiat.exchange.rates.common.config;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

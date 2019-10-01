@@ -1,4 +1,4 @@
-package space.qyvlik.fiat.exchange.rates.modules.job.config;
+package space.qyvlik.fiat.exchange.rates.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

@@ -4,8 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import space.qyvlik.fiat.exchange.rates.common.AbstractFiatExchangeRatesProvider;
-import space.qyvlik.fiat.exchange.rates.common.BaseService;
+import space.qyvlik.fiat.exchange.rates.common.base.BaseService;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
