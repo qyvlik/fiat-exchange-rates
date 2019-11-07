@@ -19,7 +19,7 @@ public class OneForgeProvider extends AbstractFiatExchangeRatesProvider {
     @Autowired
     private RestTemplate restTemplate;
 
-    private String host = "forex.1forge.com";
+    private String host = "api.1forge.com";
 
     public OneForgeProvider() {
         super("OneForge");
@@ -38,7 +38,7 @@ public class OneForgeProvider extends AbstractFiatExchangeRatesProvider {
 
         List<FiatExchangeRate> list = Lists.newArrayList();
 
-        final String path = "/1.0.3/quotes?api_key=" + account.getAccessKey();
+        final String path = "/quotes?api_key=" + account.getAccessKey();
 
         String url = "https://" + host + path;
 
