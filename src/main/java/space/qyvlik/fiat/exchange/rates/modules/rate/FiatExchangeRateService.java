@@ -4,8 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
-import space.qyvlik.fiat.exchange.rates.modules.provider.AbstractFiatExchangeRatesProvider;
 import space.qyvlik.fiat.exchange.rates.common.base.BaseService;
+import space.qyvlik.fiat.exchange.rates.modules.provider.AbstractFiatExchangeRatesProvider;
 import space.qyvlik.fiat.exchange.rates.modules.provider.ProviderFactory;
 import space.qyvlik.fiat.exchange.rates.modules.provider.entity.request.Account;
 import space.qyvlik.fiat.exchange.rates.modules.provider.entity.result.FiatExchangeRate;
@@ -39,7 +39,7 @@ public class FiatExchangeRateService extends BaseService {
         logger.info("syncFiatExchangeRateList end");
     }
 
-    public void syncFiatExchangeRateList(AbstractFiatExchangeRatesProvider provider) {
+    private void syncFiatExchangeRateList(AbstractFiatExchangeRatesProvider provider) {
         String enable = environment.getProperty("provider." + provider.getProvider() + ".enable");
 
         if (StringUtils.isBlank(enable) || !Boolean.parseBoolean(enable)) {
